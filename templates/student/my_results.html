@@ -1,0 +1,108 @@
+{% extends 'student/student_base.html' %}
+{% block title %}My Results – Student ERP{% endblock %}
+
+{% block student_content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+    <div class="section-heading mb-0"><i class="fas fa-poll-h me-2"></i>My Academic Results</div>
+    <a href="{% url 'result_search' %}" style="font-size:0.8rem;color:#1560a8;text-decoration:none;background:#e8f0fc;padding:7px 16px;border-radius:20px;font-weight:600;">
+        <i class="fas fa-external-link-alt me-1"></i>Public Result View
+    </a>
+</div>
+
+{% for result in results %}
+<div class="uni-card mb-4">
+    <!-- Semester Header -->
+    <div style="background:linear-gradient(135deg,#0d2b55,#1a3d6e);padding:14px 20px;border-radius:10px 10px 0 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+        <div style="font-family:'Noto Serif',serif;font-weight:700;color:#fff;font-size:1rem;display:flex;align-items:center;gap:8px;">
+            <i class="fas fa-book-open" style="color:#f5a623;"></i>
+            Semester {{ result.semester }}
+        </div>
+        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+            {% if result.is_pass %}
+            <span style="background:#e6f5ee;color:#1a7a45;font-weight:700;font-size:0.78rem;padding:5px 12px;border-radius:20px;">
+                <i class="fas fa-check-circle me-1"></i>PASS
+            </span>
+            {% else %}
+            <span style="background:#fdecea;color:#c0392b;font-weight:700;font-size:0.78rem;padding:5px 12px;border-radius:20px;">
+                <i class="fas fa-times-circle me-1"></i>FAIL
+            </span>
+            {% endif %}
+            <span style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.85);font-size:0.8rem;padding:5px 12px;border-radius:20px;border:1px solid rgba(255,255,255,0.2);">
+                SGPA: <strong>{{ result.sgpa }}</strong>
+            </span>
+            <span style="background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.85);font-size:0.8rem;padding:5px 12px;border-radius:20px;border:1px solid rgba(255,255,255,0.2);">
+                CGPA: <strong>{{ result.cgpa }}</strong>
+            </span>
+        </div>
+    </div>
+
+    <!-- Marks Table -->
+    <div class="uni-table-wrap" style="border-radius:0;border:none;border-top:1px solid #dce4ef;">
+        <table class="uni-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Subject</th>
+                    <th>External</th>
+                    <th>Internal</th>
+                    <th>Total</th>
+                    <th>Grade</th>
+                    <th>Status</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for sub in result.subject_results.all %}
+                <tr class="{% if sub.is_extra_subject %}extra-subject-row{% endif %}">
+                    <td style="color:#8a9bb5;font-size:0.8rem;">{{ forloop.counter }}</td>
+                    <td style="font-weight:600;">{{ sub.subject_name }}</td>
+                    <td style="text-align:center;">{{ sub.external_marks }}</td>
+                    <td style="text-align:center;">
+                        {% if sub.is_extra_subject %}<span style="color:#aabcd5;">—</span>{% else %}{{ sub.internal_marks }}{% endif %}
+                    </td>
+                    <td style="text-align:center;font-weight:700;">{{ sub.total_marks }}</td>
+                    <td style="text-align:center;"><span class="grade-pill">{{ sub.grade }}</span></td>
+                    <td>
+                        {% if sub.is_pass %}
+                        <span class="badge-pass"><i class="fas fa-check-circle"></i>Pass</span>
+                        {% else %}
+                        <span class="badge-fail"><i class="fas fa-times-circle"></i>Fail</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if sub.is_extra_subject %}
+                        <span class="badge-extra"><i class="fas fa-plus-circle me-1"></i>Extra</span>
+                        {% else %}
+                        <span class="badge-regular">Regular</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Semester Footer -->
+    <div style="background:#f8fafb;border-top:1px solid #dce4ef;border-radius:0 0 10px 10px;padding:11px 20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:0.82rem;color:#0d2b55;">
+        <span>
+            <i class="fas fa-chalkboard-teacher me-1" style="color:#e8820c;"></i>
+            <strong>Semester Status:</strong> {% if result.is_pass %}Eligible for Next Semester{% else %}Improvement Required{% endif %}
+        </span>
+        <span>
+            <i class="fas fa-calculator me-1" style="color:#e8820c;"></i>
+            SGPA: <strong>{{ result.sgpa }}</strong> &nbsp;|&nbsp; CGPA: <strong>{{ result.cgpa }}</strong>
+        </span>
+    </div>
+</div>
+{% empty %}
+<div class="uni-card">
+    <div class="card-body text-center py-5">
+        <i class="fas fa-file-alt fa-3x mb-3" style="color:#d0d9e6;"></i>
+        <h5 style="color:#5e7296;margin-bottom:8px;">No Results Available</h5>
+        <p style="font-size:0.875rem;color:#9aaebf;">Aapke semester results abhi available nahi hain.</p>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

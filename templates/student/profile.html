@@ -1,0 +1,54 @@
+{% extends 'student/student_base.html' %}
+
+{% block student_content %}
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h2 class="mb-4">My Profile</h2>
+
+        <table class="table table-bordered">
+            <tr>
+                <th>Full Name</th>
+                <td>{{ student.full_name }}</td>
+            </tr>
+            <tr>
+                <th>Roll Number</th>
+                <td>{{ student.roll_number }}</td>
+            </tr>
+            <tr>
+                <th>Enrollment Number</th>
+                <td>{{ student.enrollment_number }}</td>
+            </tr>
+            <tr>
+                <th>Date of Birth</th>
+                <td>{{ student.dob }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ student.email|default:"-" }}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ student.phone|default:"-" }}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ student.address|default:"-" }}</td>
+            </tr>
+            <tr>
+                <th>Course</th>
+                <td>
+                    {% if student.course %}
+                        {{ student.course.name }}
+                    {% else %}
+                        Not Assigned
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <th>Current Semester</th>
+                <td>{{ student.semester }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+{% endblock %}

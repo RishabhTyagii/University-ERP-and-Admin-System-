@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% block title %}Fee Structure – SVSU University{% endblock %}
+
+{% block content %}
+<div class="page-banner">
+    <div class="container">
+        <h1><i class="fas fa-rupee-sign me-2"></i>Fee Structure</h1>
+        <nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li><li class="breadcrumb-item active">Fee Structure</li></ol></nav>
+    </div>
+</div>
+
+<div class="container">
+    <div class="info-box mb-4">
+        <i class="fas fa-info-circle me-2"></i>
+        <strong>Note:</strong> Neeche di gayi fees current academic session 2025-26 ke liye hain. Fees mein badlaav ho sakta hai – latest information ke liye admission office se sampark karein.
+    </div>
+
+    <div class="uni-card">
+        <div class="card-header-navy d-flex justify-content-between align-items-center flex-wrap gap-2">
+            <h5 class="mb-0"><i class="fas fa-table me-2"></i>Course-wise Fee Details</h5>
+            <span style="font-size:0.75rem;background:rgba(255,255,255,0.15);border-radius:20px;padding:4px 14px;color:rgba(255,255,255,0.8);">
+                <i class="fas fa-calendar me-1"></i>Session 2025–26
+            </span>
+        </div>
+        <div class="uni-table-wrap">
+            <table class="uni-table">
+                <thead>
+                    <tr>
+                        <th>Course</th>
+                        <th>Year / Semester</th>
+                        <th>Amount</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for fee in fees %}
+                    <tr>
+                        <td>
+                            <span style="font-weight:600;color:#0d2b55;">{{ fee.course.name }}</span>
+                        </td>
+                        <td>
+                            <span style="background:#e8f0fc;color:#1560a8;font-size:0.75rem;font-weight:600;padding:4px 10px;border-radius:20px;">
+                                {{ fee.year_or_semester }}
+                            </span>
+                        </td>
+                        <td>
+                            <span style="font-family:'Noto Serif',serif;font-weight:700;color:#0d2b55;font-size:0.95rem;">
+                                ₹ {{ fee.amount }}
+                            </span>
+                        </td>
+                        <td style="color:#5e7296;font-size:0.85rem;">{{ fee.description }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="4" style="text-align:center;padding:40px;color:#9aaebf;">
+                            <i class="fas fa-file-invoice fa-2x mb-3 d-block"></i>
+                            Fee structure abhi upload nahi ki gayi hai. Kripya baad mein visit karein.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Payment Methods -->
+    <div class="row g-4 mt-2">
+        <div class="col-md-4">
+            <div class="uni-card h-100" style="border-top:4px solid #0d2b55;">
+                <div class="card-body text-center">
+                    <i class="fas fa-globe fa-2x mb-3" style="color:#0d2b55;"></i>
+                    <h6 style="font-weight:700;color:#0d2b55;margin-bottom:8px;">Online Payment</h6>
+                    <p style="font-size:0.82rem;color:#5e7296;">Net Banking, UPI, Debit/Credit Card ke through fee pay karein.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="uni-card h-100" style="border-top:4px solid #e8820c;">
+                <div class="card-body text-center">
+                    <i class="fas fa-university fa-2x mb-3" style="color:#e8820c;"></i>
+                    <h6 style="font-weight:700;color:#0d2b55;margin-bottom:8px;">Demand Draft</h6>
+                    <p style="font-size:0.82rem;color:#5e7296;">DD "SVSU University" ke naam se banakar office mein jama karein.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="uni-card h-100" style="border-top:4px solid #1a7a45;">
+                <div class="card-body text-center">
+                    <i class="fas fa-hand-holding-usd fa-2x mb-3" style="color:#1a7a45;"></i>
+                    <h6 style="font-weight:700;color:#0d2b55;margin-bottom:8px;">Cash Payment</h6>
+                    <p style="font-size:0.82rem;color:#5e7296;">University accounts office mein cash payment accepted hai (receipt lena na bhoolein).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="uni-card mt-4" style="background:linear-gradient(135deg,#0d2b55,#1a3d6e);border:none;">
+        <div class="card-body d-flex flex-wrap align-items-center justify-content-between gap-3">
+            <div>
+                <div style="font-family:'Noto Serif',serif;font-weight:700;color:#fff;font-size:1rem;">Fee ke baare mein koi sawaal?</div>
+                <div style="font-size:0.82rem;color:rgba(255,255,255,0.65);margin-top:3px;">Accounts office ya helpline se contact karein.</div>
+            </div>
+            <a href="{% url 'contact' %}" class="btn-saffron btn" style="font-size:0.85rem;">
+                <i class="fas fa-envelope me-2"></i>Contact Us
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

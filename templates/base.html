@@ -1,0 +1,511 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}SVSU University{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        :root {
+            --navy: #0d2b55;
+            --navy-dark: #081c38;
+            --navy-light: #1a3d6e;
+            --saffron: #e8820c;
+            --saffron-light: #f5a623;
+            --gold: #c9972b;
+            --cream: #fdf8f0;
+            --light-bg: #f4f6fa;
+            --border: #dce4ef;
+            --text-dark: #1a2540;
+            --text-muted: #5e7296;
+            --pass-green: #1a7a45;
+            --fail-red: #c0392b;
+            --extra-blue: #1560a8;
+            --radius: 10px;
+            --shadow: 0 2px 12px rgba(13,43,85,0.09);
+            --shadow-hover: 0 6px 24px rgba(13,43,85,0.15);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background: var(--light-bg);
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ── TOP STRIP ── */
+        .top-strip {
+            background: var(--navy-dark);
+            color: rgba(255,255,255,0.7);
+            font-size: 0.72rem;
+            padding: 5px 0;
+            border-bottom: 2px solid var(--saffron);
+        }
+        .top-strip a { color: rgba(255,255,255,0.7); text-decoration: none; }
+        .top-strip a:hover { color: var(--saffron-light); }
+
+        /* ── UNIVERSITY HEADER ── */
+        .uni-header {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            padding: 18px 0;
+            border-bottom: 3px solid var(--saffron);
+        }
+        .uni-header .uni-logo {
+            width: 64px; height: 64px;
+            background: rgba(255,255,255,0.15);
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.8rem; color: var(--saffron-light);
+            flex-shrink: 0;
+        }
+        .uni-header .uni-name {
+            font-family: 'Noto Serif', serif;
+            font-size: 1.55rem; font-weight: 700;
+            color: #fff; line-height: 1.2;
+            letter-spacing: 0.3px;
+        }
+        .uni-header .uni-sub {
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.7);
+            margin-top: 3px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .naac-badge {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 6px;
+            padding: 8px 14px;
+            text-align: center;
+            color: #fff;
+        }
+        .naac-badge .naac-grade {
+            font-family: 'Noto Serif', serif;
+            font-size: 1.8rem; font-weight: 700;
+            color: var(--saffron-light);
+            line-height: 1;
+        }
+        .naac-badge .naac-label {
+            font-size: 0.65rem;
+            color: rgba(255,255,255,0.65);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ── NAVBAR ── */
+        .main-nav {
+            background: #fff;
+            border-bottom: 3px solid var(--navy);
+            box-shadow: 0 2px 8px rgba(13,43,85,0.1);
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .main-nav .navbar-brand {
+            font-family: 'Noto Serif', serif;
+            font-weight: 700; font-size: 1rem;
+            color: var(--navy) !important;
+        }
+        .main-nav .nav-link {
+            color: var(--navy) !important;
+            font-size: 0.85rem; font-weight: 600;
+            padding: 10px 14px !important;
+            border-radius: 5px;
+            transition: all 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+        .main-nav .nav-link:hover,
+        .main-nav .nav-link.active {
+            background: var(--navy);
+            color: #fff !important;
+        }
+        .main-nav .nav-link.erp-link {
+            background: var(--saffron);
+            color: #fff !important;
+            margin-left: 8px;
+        }
+        .main-nav .nav-link.erp-link:hover { background: var(--navy); }
+        .main-nav .navbar-toggler {
+            border-color: var(--navy);
+            color: var(--navy);
+        }
+
+        /* ── PAGE CONTENT ── */
+        .page-content { flex: 1; padding: 30px 0 50px; }
+
+        /* ── PAGE HEADER BANNER ── */
+        .page-banner {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            padding: 22px 0 18px;
+            margin-bottom: 28px;
+            border-bottom: 3px solid var(--saffron);
+        }
+        .page-banner h1 {
+            font-family: 'Noto Serif', serif;
+            font-size: 1.6rem; font-weight: 700;
+            color: #fff; margin: 0;
+        }
+        .page-banner .breadcrumb {
+            background: transparent; margin: 0; padding: 0;
+        }
+        .page-banner .breadcrumb-item, .page-banner .breadcrumb-item a {
+            color: rgba(255,255,255,0.65); font-size: 0.8rem;
+        }
+        .page-banner .breadcrumb-item.active { color: var(--saffron-light); }
+        .page-banner .breadcrumb-item + .breadcrumb-item::before { color: rgba(255,255,255,0.4); }
+
+        /* ── CARDS ── */
+        .uni-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+        .uni-card .card-header-navy {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            padding: 14px 20px;
+            border-bottom: 3px solid var(--saffron);
+        }
+        .uni-card .card-header-navy h5, .uni-card .card-header-navy h4 {
+            color: #fff; margin: 0;
+            font-family: 'Noto Serif', serif;
+            font-size: 1rem; font-weight: 700;
+        }
+        .uni-card .card-body { padding: 22px; }
+
+        /* ── SECTION TITLE ── */
+        .section-heading {
+            font-family: 'Noto Serif', serif;
+            font-size: 1.3rem; font-weight: 700;
+            color: var(--navy);
+            border-left: 4px solid var(--saffron);
+            padding-left: 12px;
+            margin-bottom: 20px;
+        }
+
+        /* ── TABLES ── */
+        .uni-table-wrap {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+        .uni-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+            min-width: 520px;
+        }
+        .uni-table thead tr {
+            background: var(--navy);
+        }
+        .uni-table thead th {
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 12px 14px;
+            white-space: nowrap;
+            border: none;
+        }
+        .uni-table tbody tr {
+            border-bottom: 1px solid #ecf0f8;
+            transition: background 0.15s;
+        }
+        .uni-table tbody tr:last-child { border-bottom: none; }
+        .uni-table tbody tr:hover { background: #f0f4fb; }
+        .uni-table tbody td {
+            padding: 11px 14px;
+            vertical-align: middle;
+            color: var(--text-dark);
+        }
+        .uni-table tbody tr.extra-subject-row { background: #e8f0fc; }
+        .uni-table tbody tr.extra-subject-row td { color: #1a3a70; }
+        .uni-table tbody tr.extra-subject-row:hover { background: #dce8fb; }
+
+        /* ── BADGES ── */
+        .badge-pass {
+            background: #e6f4ee; color: var(--pass-green);
+            font-weight: 700; font-size: 0.72rem;
+            padding: 4px 10px; border-radius: 20px;
+            display: inline-flex; align-items: center; gap: 4px;
+        }
+        .badge-fail {
+            background: #fdecea; color: var(--fail-red);
+            font-weight: 700; font-size: 0.72rem;
+            padding: 4px 10px; border-radius: 20px;
+            display: inline-flex; align-items: center; gap: 4px;
+        }
+        .badge-extra {
+            background: #dce8fc; color: var(--extra-blue);
+            font-weight: 600; font-size: 0.7rem;
+            padding: 3px 9px; border-radius: 20px;
+        }
+        .badge-regular {
+            background: #eef1f6; color: var(--text-muted);
+            font-size: 0.7rem;
+            padding: 3px 9px; border-radius: 20px;
+        }
+        .grade-pill {
+            background: var(--navy); color: #fff;
+            font-weight: 700; font-size: 0.8rem;
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            display: inline-flex; align-items: center; justify-content: center;
+        }
+
+        /* ── BUTTONS ── */
+        .btn-navy {
+            background: var(--navy); color: #fff;
+            border: none; border-radius: 7px;
+            padding: 10px 22px; font-weight: 600;
+            font-size: 0.88rem; transition: all 0.2s;
+        }
+        .btn-navy:hover { background: var(--navy-dark); color: #fff; transform: translateY(-1px); }
+        .btn-saffron {
+            background: var(--saffron); color: #fff;
+            border: none; border-radius: 7px;
+            padding: 10px 22px; font-weight: 600;
+            font-size: 0.88rem; transition: all 0.2s;
+        }
+        .btn-saffron:hover { background: #d4730a; color: #fff; transform: translateY(-1px); }
+        .btn-outline-navy {
+            border: 2px solid var(--navy); color: var(--navy);
+            background: transparent; border-radius: 7px;
+            padding: 8px 20px; font-weight: 600;
+            font-size: 0.85rem; transition: all 0.2s;
+        }
+        .btn-outline-navy:hover { background: var(--navy); color: #fff; }
+
+        /* ── FORM INPUTS ── */
+        .uni-input {
+            border: 1.5px solid var(--border); border-radius: 7px;
+            padding: 10px 14px; font-size: 0.88rem;
+            width: 100%; transition: border-color 0.2s;
+            font-family: 'Noto Sans', sans-serif;
+        }
+        .uni-input:focus {
+            outline: none; border-color: var(--navy);
+            box-shadow: 0 0 0 3px rgba(13,43,85,0.1);
+        }
+        .form-label-uni {
+            font-size: 0.82rem; font-weight: 600;
+            color: var(--navy); margin-bottom: 6px;
+            display: block; text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+
+        /* ── ALERT/INFO BOX ── */
+        .info-box {
+            background: #e8f0fc; border-left: 4px solid var(--navy);
+            border-radius: 0 7px 7px 0;
+            padding: 12px 16px; font-size: 0.85rem;
+            color: var(--navy);
+        }
+        .alert-success-uni {
+            background: #e6f5ee; border-left: 4px solid #1a7a45;
+            border-radius: 0 7px 7px 0;
+            padding: 12px 16px; font-size: 0.85rem;
+            color: #1a5c33;
+        }
+        .alert-danger-uni {
+            background: #fdecea; border-left: 4px solid #c0392b;
+            border-radius: 0 7px 7px 0;
+            padding: 12px 16px; font-size: 0.85rem;
+            color: #922b21;
+        }
+
+        /* ── FOOTER ── */
+        footer.main-footer {
+            background: var(--navy-dark);
+            border-top: 3px solid var(--saffron);
+            color: rgba(255,255,255,0.7);
+            padding: 30px 0 16px;
+        }
+        footer.main-footer .footer-title {
+            font-family: 'Noto Serif', serif;
+            color: #fff; font-size: 1rem; font-weight: 700;
+            margin-bottom: 14px;
+        }
+        footer.main-footer .footer-link {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.82rem; text-decoration: none;
+            display: block; margin-bottom: 6px;
+            transition: color 0.2s;
+        }
+        footer.main-footer .footer-link:hover { color: var(--saffron-light); }
+        footer.main-footer .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 24px; padding-top: 14px;
+            font-size: 0.75rem; text-align: center;
+            color: rgba(255,255,255,0.45);
+        }
+        footer.main-footer .footer-bottom a {
+            color: var(--saffron-light); text-decoration: none;
+        }
+
+        /* ── STAT CARDS ── */
+        .stat-card {
+            background: #fff; border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 20px;
+            border-top: 4px solid var(--navy);
+            box-shadow: var(--shadow);
+            transition: box-shadow 0.2s;
+        }
+        .stat-card:hover { box-shadow: var(--shadow-hover); }
+        .stat-card .stat-icon {
+            width: 46px; height: 46px;
+            background: rgba(13,43,85,0.08);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; color: var(--navy); margin-bottom: 12px;
+        }
+        .stat-card .stat-value {
+            font-family: 'Noto Serif', serif;
+            font-size: 1.7rem; font-weight: 700;
+            color: var(--navy);
+        }
+        .stat-card .stat-label {
+            font-size: 0.78rem; color: var(--text-muted);
+            font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.5px; margin-top: 4px;
+        }
+
+        /* ── MOBILE OVERRIDES ── */
+        @media (max-width: 768px) {
+            .uni-header .uni-name { font-size: 1.1rem; }
+            .naac-badge { display: none; }
+            .page-banner h1 { font-size: 1.2rem; }
+            .page-content { padding: 20px 0 40px; }
+            .main-nav .nav-link {
+                padding: 10px 12px !important;
+                font-size: 0.82rem;
+            }
+            .main-nav .nav-link.erp-link { margin-left: 0; margin-top: 6px; }
+        }
+    </style>
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+<!-- Top Strip -->
+<div class="top-strip d-none d-md-block">
+    <div class="container d-flex justify-content-between align-items-center">
+        <span><i class="fas fa-phone me-2"></i>+91-9876543210 &nbsp;|&nbsp; <i class="fas fa-envelope me-2"></i>info@svsu.edu.in</span>
+        <span>
+            {% if request.user.is_authenticated %}
+                <i class="fas fa-user-circle me-1"></i>{{ request.user }}
+                &nbsp;|&nbsp; <a href="{% url 'student_logout' %}"><i class="fas fa-sign-out-alt me-1"></i>Logout</a>
+            {% else %}
+                <a href="{% url 'student_login' %}"><i class="fas fa-lock me-1"></i>Student ERP Login</a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+
+<!-- University Header -->
+<div class="uni-header">
+    <div class="container">
+        <div class="d-flex align-items-center gap-3">
+            <div class="uni-logo">
+                <i class="fas fa-university"></i>
+            </div>
+            <div class="flex-grow-1">
+                <div class="uni-name">SVSU University</div>
+                <div class="uni-sub">Swami Vivekanand Subharti University &nbsp;|&nbsp; Meerut, Uttar Pradesh</div>
+            </div>
+            <div class="naac-badge d-none d-lg-block">
+                <div class="naac-grade">A+</div>
+                <div class="naac-label">NAAC Grade</div>
+            </div>
+            <div class="naac-badge d-none d-lg-block ms-2">
+                <div class="naac-grade" style="font-size:1.1rem;color:#fff;">UGC</div>
+                <div class="naac-label">Recognised</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Main Navigation -->
+<nav class="navbar navbar-expand-lg main-nav">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a class="nav-link" href="{% url 'home' %}"><i class="fas fa-home me-1"></i>Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'courses' %}">Courses</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'admission_process' %}">Admission</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'fee_structure' %}">Fee Structure</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'result_search' %}">Result</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+                <li class="nav-item"><a class="nav-link erp-link" href="{% url 'student_login' %}"><i class="fas fa-user-shield me-1"></i>Student ERP</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="page-content">
+    {% block content %}{% endblock %}
+</div>
+
+<!-- Footer -->
+<footer class="main-footer">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="footer-title"><i class="fas fa-university me-2"></i>SVSU University</div>
+                <p style="font-size:0.82rem;color:rgba(255,255,255,0.55);line-height:1.7;">
+                    A premier institution committed to academic excellence,
+                    research, and holistic student development.
+                </p>
+            </div>
+            <div class="col-md-2">
+                <div class="footer-title">Quick Links</div>
+                <a href="{% url 'home' %}" class="footer-link">Home</a>
+                <a href="{% url 'about' %}" class="footer-link">About Us</a>
+                <a href="{% url 'courses' %}" class="footer-link">Courses</a>
+                <a href="{% url 'admission_process' %}" class="footer-link">Admission</a>
+            </div>
+            <div class="col-md-2">
+                <div class="footer-title">Student Portal</div>
+                <a href="{% url 'result_search' %}" class="footer-link">Check Result</a>
+                <a href="{% url 'fee_structure' %}" class="footer-link">Fee Structure</a>
+                <a href="{% url 'student_login' %}" class="footer-link">Student ERP</a>
+                <a href="{% url 'contact' %}" class="footer-link">Contact Us</a>
+            </div>
+            <div class="col-md-4">
+                <div class="footer-title">Contact</div>
+                <p style="font-size:0.82rem;color:rgba(255,255,255,0.55);line-height:1.9;">
+                    <i class="fas fa-map-marker-alt me-2" style="color:var(--saffron-light)"></i>SVSU Campus, Meerut, Uttar Pradesh<br>
+                    <i class="fas fa-phone me-2" style="color:var(--saffron-light)"></i>+91-9876543210<br>
+                    <i class="fas fa-envelope me-2" style="color:var(--saffron-light)"></i>info@svsu.edu.in<br>
+                    <i class="fas fa-clock me-2" style="color:var(--saffron-light)"></i>Mon – Sat: 9 AM – 5 PM
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2026 SVSU University. All Rights Reserved. &nbsp;|&nbsp;
+            Designed &amp; Maintained by IT Department &nbsp;|&nbsp;
+            <a href="#">Privacy Policy</a>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+{% block extra_js %}{% endblock %}
+</body>
+</html>

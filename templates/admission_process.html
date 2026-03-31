@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% block title %}Admission Process – SVSU University{% endblock %}
+
+{% block content %}
+<div class="page-banner">
+    <div class="container">
+        <h1><i class="fas fa-clipboard-check me-2"></i>Admission Process</h1>
+        <nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li><li class="breadcrumb-item active">Admission</li></ol></nav>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row g-4">
+        <div class="col-lg-8">
+            <div class="uni-card mb-4">
+                <div class="card-header-navy">
+                    <h5><i class="fas fa-list-ol me-2"></i>Step-by-Step Admission Guide</h5>
+                </div>
+                <div class="card-body py-4">
+                    <!-- Steps -->
+                    <div style="position:relative;">
+                        <!-- Step 1 -->
+                        <div style="display:flex;gap:18px;margin-bottom:28px;align-items:flex-start;">
+                            <div style="flex-shrink:0;width:44px;height:44px;background:#0d2b55;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-family:'Noto Serif',serif;font-size:1rem;position:relative;z-index:1;">1</div>
+                            <div style="flex-grow:1;padding-top:8px;">
+                                <div style="font-weight:700;color:#0d2b55;font-size:0.95rem;margin-bottom:6px;">Eligibility Check &amp; Course Selection</div>
+                                <p style="font-size:0.875rem;color:#5e7296;line-height:1.7;margin:0;">SVSU University portal par visit karein aur apni qualification ke anusar course eligibility check karein. Available programmes aur unki eligibility criteria carefully review karein.</p>
+                            </div>
+                        </div>
+                        <!-- Connector -->
+                        <div style="width:2px;height:20px;background:#dce4ef;margin-left:21px;margin-top:-20px;margin-bottom:8px;"></div>
+                        <!-- Step 2 -->
+                        <div style="display:flex;gap:18px;margin-bottom:28px;align-items:flex-start;">
+                            <div style="flex-shrink:0;width:44px;height:44px;background:#0d2b55;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-family:'Noto Serif',serif;font-size:1rem;position:relative;z-index:1;">2</div>
+                            <div style="flex-grow:1;padding-top:8px;">
+                                <div style="font-weight:700;color:#0d2b55;font-size:0.95rem;margin-bottom:6px;">Application Form Fill Karein</div>
+                                <p style="font-size:0.875rem;color:#5e7296;line-height:1.7;margin:0;">Online admission inquiry/application form bharen. Saare personal, academic aur contact details accurately fill karein.</p>
+                            </div>
+                        </div>
+                        <div style="width:2px;height:20px;background:#dce4ef;margin-left:21px;margin-top:-20px;margin-bottom:8px;"></div>
+                        <!-- Step 3 -->
+                        <div style="display:flex;gap:18px;margin-bottom:28px;align-items:flex-start;">
+                            <div style="flex-shrink:0;width:44px;height:44px;background:#0d2b55;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-family:'Noto Serif',serif;font-size:1rem;position:relative;z-index:1;">3</div>
+                            <div style="flex-grow:1;padding-top:8px;">
+                                <div style="font-weight:700;color:#0d2b55;font-size:0.95rem;margin-bottom:6px;">Required Documents Submit Karein</div>
+                                <p style="font-size:0.875rem;color:#5e7296;line-height:1.7;margin:0;">Saare required documents ki scanned copies upload karein ya university office mein jama karein (dekhein document list neeche).</p>
+                            </div>
+                        </div>
+                        <div style="width:2px;height:20px;background:#dce4ef;margin-left:21px;margin-top:-20px;margin-bottom:8px;"></div>
+                        <!-- Step 4 -->
+                        <div style="display:flex;gap:18px;margin-bottom:28px;align-items:flex-start;">
+                            <div style="flex-shrink:0;width:44px;height:44px;background:#0d2b55;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-family:'Noto Serif',serif;font-size:1rem;position:relative;z-index:1;">4</div>
+                            <div style="flex-grow:1;padding-top:8px;">
+                                <div style="font-weight:700;color:#0d2b55;font-size:0.95rem;margin-bottom:6px;">Document Verification</div>
+                                <p style="font-size:0.875rem;color:#5e7296;line-height:1.7;margin:0;">University/Admin team dwara documents ki verification ki jaayegi. Agar koi additional document required hoga toh aapko contact kiya jaayega.</p>
+                            </div>
+                        </div>
+                        <div style="width:2px;height:20px;background:#dce4ef;margin-left:21px;margin-top:-20px;margin-bottom:8px;"></div>
+                        <!-- Step 5 -->
+                        <div style="display:flex;gap:18px;margin-bottom:28px;align-items:flex-start;">
+                            <div style="flex-shrink:0;width:44px;height:44px;background:#e8820c;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-family:'Noto Serif',serif;font-size:1rem;position:relative;z-index:1;">5</div>
+                            <div style="flex-grow:1;padding-top:8px;">
+                                <div style="font-weight:700;color:#0d2b55;font-size:0.95rem;margin-bottom:6px;">Fee Submission</div>
+                                <p style="font-size:0.875rem;color:#5e7296;line-height:1.7;margin:0;">Approval milne ke baad prescribed fee online ya demand draft ke through submit karein. <a href="{% url 'fee_structure' %}" style="color:#e8820c;">Fee structure dekhein &rarr;</a></p>
+                            </div>
+                        </div>
+                        <div style="width:2px;height:20px;background:#dce4ef;margin-left:21px;margin-top:-20px;margin-bottom:8px;"></div>
+                        <!-- Step 6 -->
+                        <div style="display:flex;gap:18px;align-items:flex-start;">
+                            <div style="flex-shrink:0;width:44px;height:44px;background:#1a7a45;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-family:'Noto Serif',serif;font-size:1rem;">6</div>
+                            <div style="flex-grow:1;padding-top:8px;">
+                                <div style="font-weight:700;color:#1a7a45;font-size:0.95rem;margin-bottom:6px;">Admission Confirmed – Enrollment Generation</div>
+                                <p style="font-size:0.875rem;color:#5e7296;line-height:1.7;margin:0;">Fee submission ke baad aapka enrollment number generate hoga aur student ERP portal access milega. Welcome to SVSU University!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="uni-card mb-4">
+                <div class="card-header-navy"><h5><i class="fas fa-file-alt me-2"></i>Documents Required</h5></div>
+                <div class="card-body p-0">
+                    {% for doc in documents_required|default:"" %}
+                    {% empty %}
+                    <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid #dce4ef;font-size:0.875rem;">
+                        <i class="fas fa-file-check" style="color:#0d2b55;width:16px;"></i>10th Marksheet (Original + Copy)
+                    </div>
+                    <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid #dce4ef;font-size:0.875rem;">
+                        <i class="fas fa-file-check" style="color:#0d2b55;width:16px;"></i>12th Marksheet (Original + Copy)
+                    </div>
+                    <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid #dce4ef;font-size:0.875rem;">
+                        <i class="fas fa-file-check" style="color:#0d2b55;width:16px;"></i>Transfer Certificate
+                    </div>
+                    <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid #dce4ef;font-size:0.875rem;">
+                        <i class="fas fa-file-check" style="color:#0d2b55;width:16px;"></i>Character Certificate
+                    </div>
+                    <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid #dce4ef;font-size:0.875rem;">
+                        <i class="fas fa-file-check" style="color:#0d2b55;width:16px;"></i>Aadhaar Card (Photo ID)
+                    </div>
+                    <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid #dce4ef;font-size:0.875rem;">
+                        <i class="fas fa-file-check" style="color:#0d2b55;width:16px;"></i>Passport Size Photographs (4)
+                    </div>
+                    <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;font-size:0.875rem;">
+                        <i class="fas fa-file-check" style="color:#0d2b55;width:16px;"></i>Migration Certificate (if applicable)
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="uni-card">
+                <div class="card-body" style="background:linear-gradient(135deg,#0d2b55,#1a3d6e);border-radius:10px;">
+                    <div style="color:#fff;font-family:'Noto Serif',serif;font-weight:700;font-size:1rem;margin-bottom:8px;">
+                        <i class="fas fa-question-circle me-2" style="color:#f5a623;"></i>Need Help?
+                    </div>
+                    <p style="font-size:0.83rem;color:rgba(255,255,255,0.75);margin-bottom:16px;line-height:1.6;">Koi bhi query ke liye admission office se contact karein.</p>
+                    <a href="{% url 'contact' %}" class="btn-saffron btn w-100" style="font-size:0.85rem;">
+                        <i class="fas fa-envelope me-2"></i>Contact Admission Office
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

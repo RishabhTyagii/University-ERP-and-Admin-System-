@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-3 mb-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="mb-3">Admin Panel</h5>
+                <div class="list-group">
+                    <a href="{% url 'admin_dashboard' %}" class="list-group-item list-group-item-action">Dashboard</a>
+                    <a href="{% url 'admin_course_list' %}" class="list-group-item list-group-item-action">Courses</a>
+                    <a href="{% url 'admin_student_list' %}" class="list-group-item list-group-item-action">Students</a>
+                    <a href="{% url 'admin_fee_list' %}" class="list-group-item list-group-item-action">Fee Structure</a>
+                    <a href="{% url 'admin_result_list' %}" class="list-group-item list-group-item-action">Results</a>
+                    <a href="{% url 'admin_messages' %}" class="list-group-item list-group-item-action">Messages</a>
+                    <a href="{% url 'admin_logout' %}" class="list-group-item list-group-item-action text-danger">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-9">
+        {% block admin_content %}{% endblock %}
+    </div>
+</div>
+{% endblock %}

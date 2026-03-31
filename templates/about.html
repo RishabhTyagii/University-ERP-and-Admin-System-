@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+{% block title %}About Us – SVSU University{% endblock %}
+
+{% block content %}
+<div class="page-banner">
+    <div class="container">
+        <h1><i class="fas fa-university me-2"></i>About SVSU University</h1>
+        <nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li><li class="breadcrumb-item active">About Us</li></ol></nav>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row g-4">
+        <div class="col-lg-8">
+            <div class="uni-card mb-4">
+                <div class="card-body">
+                    <div class="section-heading">Who We Are</div>
+                    <p style="font-size:0.95rem;line-height:1.9;color:#2c3e50;margin-bottom:16px;">
+                        SVSU University ek modern higher education institution hai jo quality education,
+                        practical learning aur student development par focus karti hai. Hamari university
+                        ko UGC dwara recognized kiya gaya hai aur NAAC ne A+ grade se sammanit kiya hai.
+                    </p>
+                    <p style="font-size:0.95rem;line-height:1.9;color:#2c3e50;margin-bottom:16px;">
+                        Hamara objective students ko academic excellence, discipline aur career growth ke liye
+                        prepare karna hai. Hum ek aise learning environment banane mein believe karte hain
+                        jahan students sirf degree nahi, balki skills aur character develop karein.
+                    </p>
+                    <p style="font-size:0.95rem;line-height:1.9;color:#2c3e50;">
+                        University mein state-of-the-art infrastructure, experienced faculty team aur
+                        industry-aligned curriculum hai jo students ko 21st century challenges ke liye
+                        ready karta hai.
+                    </p>
+                </div>
+            </div>
+
+            <div class="uni-card mb-4">
+                <div class="card-header-navy"><h5><i class="fas fa-bullseye me-2"></i>Vision & Mission</h5></div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div style="background:#f0f4fb;border-radius:8px;padding:18px;height:100%;border-left:4px solid #0d2b55;">
+                                <div style="font-weight:700;color:#0d2b55;margin-bottom:8px;font-size:0.9rem;text-transform:uppercase;letter-spacing:0.5px;"><i class="fas fa-eye me-2 text-saffron"></i>Vision</div>
+                                <p style="font-size:0.875rem;color:#3d4f6e;line-height:1.7;margin:0;">
+                                    To be a world-class institution that nurtures intellectual curiosity,
+                                    fosters innovation, and prepares students for leadership roles in a global society.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div style="background:#fff8f0;border-radius:8px;padding:18px;height:100%;border-left:4px solid #e8820c;">
+                                <div style="font-weight:700;color:#0d2b55;margin-bottom:8px;font-size:0.9rem;text-transform:uppercase;letter-spacing:0.5px;"><i class="fas fa-rocket me-2" style="color:#e8820c;"></i>Mission</div>
+                                <p style="font-size:0.875rem;color:#3d4f6e;line-height:1.7;margin:0;">
+                                    To provide quality education through innovative teaching, research, and
+                                    community engagement, creating graduates who contribute positively to society.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="uni-card">
+                <div class="card-header-navy"><h5><i class="fas fa-star me-2"></i>Key Highlights</h5></div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        {% for item in highlights|default:"" %}
+                        {% empty %}
+                        <div class="col-md-6">
+                            <div style="display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid #f0f0f0;">
+                                <div style="width:36px;height:36px;background:rgba(13,43,85,0.08);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#0d2b55;font-size:0.9rem;">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div>
+                                    <div style="font-weight:600;font-size:0.875rem;color:#0d2b55;">NAAC A+ Accredited</div>
+                                    <div style="font-size:0.8rem;color:#5e7296;">National Assessment and Accreditation Council</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div style="display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid #f0f0f0;">
+                                <div style="width:36px;height:36px;background:rgba(13,43,85,0.08);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#0d2b55;font-size:0.9rem;">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div>
+                                    <div style="font-weight:600;font-size:0.875rem;color:#0d2b55;">10,000+ Alumni Network</div>
+                                    <div style="font-size:0.8rem;color:#5e7296;">Strong global alumni community</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div style="display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid #f0f0f0;">
+                                <div style="width:36px;height:36px;background:rgba(13,43,85,0.08);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#0d2b55;font-size:0.9rem;">
+                                    <i class="fas fa-chalkboard-teacher"></i>
+                                </div>
+                                <div>
+                                    <div style="font-weight:600;font-size:0.875rem;color:#0d2b55;">200+ Experienced Faculty</div>
+                                    <div style="font-size:0.8rem;color:#5e7296;">PhD holders from top institutions</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div style="display:flex;align-items:flex-start;gap:12px;padding:12px 0;">
+                                <div style="width:36px;height:36px;background:rgba(13,43,85,0.08);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#0d2b55;font-size:0.9rem;">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                                <div>
+                                    <div style="font-weight:600;font-size:0.875rem;color:#0d2b55;">Modern Infrastructure</div>
+                                    <div style="font-size:0.8rem;color:#5e7296;">Labs, library, sports, hostel facilities</div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+            <div class="uni-card mb-4">
+                <div class="card-header-navy"><h5><i class="fas fa-info-circle me-2"></i>Quick Facts</h5></div>
+                <div class="card-body p-0">
+                    <table style="width:100%;border-collapse:collapse;font-size:0.85rem;">
+                        <tr style="border-bottom:1px solid #dce4ef;">
+                            <td style="padding:12px 16px;font-weight:600;color:#5e7296;width:45%;">Established</td>
+                            <td style="padding:12px 16px;color:#0d2b55;font-weight:600;">1990</td>
+                        </tr>
+                        <tr style="border-bottom:1px solid #dce4ef;">
+                            <td style="padding:12px 16px;font-weight:600;color:#5e7296;">Type</td>
+                            <td style="padding:12px 16px;color:#0d2b55;font-weight:600;">Private University</td>
+                        </tr>
+                        <tr style="border-bottom:1px solid #dce4ef;">
+                            <td style="padding:12px 16px;font-weight:600;color:#5e7296;">Location</td>
+                            <td style="padding:12px 16px;color:#0d2b55;font-weight:600;">Meerut, UP</td>
+                        </tr>
+                        <tr style="border-bottom:1px solid #dce4ef;">
+                            <td style="padding:12px 16px;font-weight:600;color:#5e7296;">Accreditation</td>
+                            <td style="padding:12px 16px;"><span style="background:#e6f4ee;color:#1a7a45;font-weight:700;font-size:0.75rem;padding:3px 10px;border-radius:20px;">NAAC A+</span></td>
+                        </tr>
+                        <tr style="border-bottom:1px solid #dce4ef;">
+                            <td style="padding:12px 16px;font-weight:600;color:#5e7296;">Students</td>
+                            <td style="padding:12px 16px;color:#0d2b55;font-weight:600;">10,000+</td>
+                        </tr>
+                        <tr>
+                            <td style="padding:12px 16px;font-weight:600;color:#5e7296;">Affiliation</td>
+                            <td style="padding:12px 16px;color:#0d2b55;font-weight:600;">UGC Recognised</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="uni-card">
+                <div class="card-header-navy"><h5><i class="fas fa-map-marker-alt me-2"></i>Location</h5></div>
+                <div class="card-body">
+                    <p style="font-size:0.875rem;line-height:1.7;color:#3d4f6e;margin-bottom:14px;">
+                        <i class="fas fa-map-pin me-2" style="color:#e8820c;"></i>
+                        SVSU University Campus, NH-58, Meerut – 250002, Uttar Pradesh, India
+                    </p>
+                    <a href="{% url 'contact' %}" class="btn-navy btn w-100" style="font-size:0.85rem;">
+                        <i class="fas fa-envelope me-2"></i>Contact University
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

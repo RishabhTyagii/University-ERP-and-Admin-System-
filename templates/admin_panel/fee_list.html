@@ -1,0 +1,33 @@
+{% extends 'admin_panel/admin_base.html' %}
+
+{% block admin_content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Fee Structure</h2>
+    <a href="{% url 'admin_fee_add' %}" class="btn btn-primary">Add Fee</a>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Year/Semester</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for fee in fees %}
+                <tr>
+                    <td>{{ fee.course.name }}</td>
+                    <td>{{ fee.year_or_semester }}</td>
+                    <td>₹ {{ fee.amount }}</td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="3" class="text-center">No fee records found.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

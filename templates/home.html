@@ -1,0 +1,186 @@
+{% extends 'base.html' %}
+
+{% block title %}Home – SVSU University{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<div style="background:linear-gradient(135deg,#0d2b55 0%,#1a3d6e 60%,#0f3460 100%);padding:60px 0 50px;margin-bottom:0;border-bottom:3px solid #e8820c;">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-7">
+                <div style="font-size:0.78rem;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px;">
+                    <i class="fas fa-map-marker-alt me-1" style="color:#f5a623;"></i> Meerut, Uttar Pradesh &nbsp;|&nbsp; Est. 1990
+                </div>
+                <h1 style="font-family:'Noto Serif',serif;font-size:2.4rem;font-weight:700;color:#fff;line-height:1.25;margin-bottom:16px;">
+                    Welcome to SVSU University
+                </h1>
+                <p style="font-size:1rem;color:rgba(255,255,255,0.75);line-height:1.8;max-width:580px;margin-bottom:28px;">
+                    SVSU University Portal mein aap courses, admission process, fee structure,
+                    result aur student ERP access kar sakte hain.
+                    Quality education aur student excellence hamare lakshya hain.
+                </p>
+                <div class="d-flex flex-wrap gap-3">
+                    <a href="{% url 'courses' %}" class="btn-saffron btn" style="font-size:0.9rem;padding:11px 28px;">
+                        <i class="fas fa-graduation-cap me-2"></i>Explore Courses
+                    </a>
+                    <a href="{% url 'admission_process' %}" class="btn" style="border:2px solid rgba(255,255,255,0.4);color:#fff;border-radius:7px;padding:11px 28px;font-weight:600;font-size:0.9rem;transition:all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">
+                        <i class="fas fa-file-alt me-2"></i>Apply Now
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-5 d-none d-lg-flex justify-content-end align-items-center">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+                    <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:12px;padding:20px;text-align:center;">
+                        <div style="font-family:'Noto Serif',serif;font-size:2rem;font-weight:700;color:#f5a623;">50+</div>
+                        <div style="font-size:0.75rem;color:rgba(255,255,255,0.65);text-transform:uppercase;letter-spacing:0.5px;">Courses</div>
+                    </div>
+                    <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:12px;padding:20px;text-align:center;">
+                        <div style="font-family:'Noto Serif',serif;font-size:2rem;font-weight:700;color:#f5a623;">10K+</div>
+                        <div style="font-size:0.75rem;color:rgba(255,255,255,0.65);text-transform:uppercase;letter-spacing:0.5px;">Students</div>
+                    </div>
+                    <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:12px;padding:20px;text-align:center;">
+                        <div style="font-family:'Noto Serif',serif;font-size:2rem;font-weight:700;color:#f5a623;">200+</div>
+                        <div style="font-size:0.75rem;color:rgba(255,255,255,0.65);text-transform:uppercase;letter-spacing:0.5px;">Faculty</div>
+                    </div>
+                    <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:12px;padding:20px;text-align:center;">
+                        <div style="font-family:'Noto Serif',serif;font-size:2rem;font-weight:700;color:#f5a623;">30+</div>
+                        <div style="font-size:0.75rem;color:rgba(255,255,255,0.65);text-transform:uppercase;letter-spacing:0.5px;">Years</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Links Bar -->
+<div style="background:#fff;border-bottom:1px solid #dce4ef;padding:14px 0;margin-bottom:36px;box-shadow:0 2px 6px rgba(13,43,85,0.06);">
+    <div class="container">
+        <div class="d-flex flex-wrap gap-2">
+            <span style="font-size:0.78rem;font-weight:700;color:#5e7296;text-transform:uppercase;letter-spacing:0.5px;align-self:center;margin-right:8px;">Quick Links:</span>
+            <a href="{% url 'result_search' %}" style="background:#f0f4fb;color:#0d2b55;border-radius:20px;padding:6px 16px;font-size:0.8rem;font-weight:600;text-decoration:none;border:1px solid #dce4ef;transition:all 0.2s;" onmouseover="this.style.background='#0d2b55';this.style.color='#fff'" onmouseout="this.style.background='#f0f4fb';this.style.color='#0d2b55'">
+                <i class="fas fa-poll-h me-1"></i>Check Result
+            </a>
+            <a href="{% url 'fee_structure' %}" style="background:#f0f4fb;color:#0d2b55;border-radius:20px;padding:6px 16px;font-size:0.8rem;font-weight:600;text-decoration:none;border:1px solid #dce4ef;transition:all 0.2s;" onmouseover="this.style.background='#0d2b55';this.style.color='#fff'" onmouseout="this.style.background='#f0f4fb';this.style.color='#0d2b55'">
+                <i class="fas fa-rupee-sign me-1"></i>Fee Structure
+            </a>
+            <a href="{% url 'admission_process' %}" style="background:#f0f4fb;color:#0d2b55;border-radius:20px;padding:6px 16px;font-size:0.8rem;font-weight:600;text-decoration:none;border:1px solid #dce4ef;transition:all 0.2s;" onmouseover="this.style.background='#0d2b55';this.style.color='#fff'" onmouseout="this.style.background='#f0f4fb';this.style.color='#0d2b55'">
+                <i class="fas fa-clipboard-list me-1"></i>Admission Process
+            </a>
+            <a href="{% url 'student_login' %}" style="background:#f0f4fb;color:#0d2b55;border-radius:20px;padding:6px 16px;font-size:0.8rem;font-weight:600;text-decoration:none;border:1px solid #dce4ef;transition:all 0.2s;" onmouseover="this.style.background='#0d2b55';this.style.color='#fff'" onmouseout="this.style.background='#f0f4fb';this.style.color='#0d2b55'">
+                <i class="fas fa-user-circle me-1"></i>Student ERP
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Portal Cards -->
+<div class="container">
+    <div class="section-heading">University Portal</div>
+    <div class="row g-4 mb-5">
+
+        <div class="col-sm-6 col-lg-4">
+            <div class="uni-card h-100" style="border-top:4px solid #0d2b55;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 6px 24px rgba(13,43,85,0.15)'" onmouseout="this.style.boxShadow='0 2px 12px rgba(13,43,85,0.09)'">
+                <div class="card-body d-flex flex-column">
+                    <div style="width:48px;height:48px;background:rgba(13,43,85,0.08);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:#0d2b55;margin-bottom:14px;">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h5 style="font-family:'Noto Serif',serif;font-weight:700;color:#0d2b55;margin-bottom:8px;">Courses Offered</h5>
+                    <p style="font-size:0.85rem;color:#5e7296;flex-grow:1;">University ke available courses, duration aur details dekhiye.</p>
+                    <a href="{% url 'courses' %}" class="btn-outline-navy btn mt-3" style="align-self:flex-start;">View Courses <i class="fas fa-arrow-right ms-1"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-4">
+            <div class="uni-card h-100" style="border-top:4px solid #e8820c;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 6px 24px rgba(13,43,85,0.15)'" onmouseout="this.style.boxShadow='0 2px 12px rgba(13,43,85,0.09)'">
+                <div class="card-body d-flex flex-column">
+                    <div style="width:48px;height:48px;background:rgba(232,130,12,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:#e8820c;margin-bottom:14px;">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h5 style="font-family:'Noto Serif',serif;font-weight:700;color:#0d2b55;margin-bottom:8px;">Admissions</h5>
+                    <p style="font-size:0.85rem;color:#5e7296;flex-grow:1;">Admission process, eligibility criteria aur required documents dekhiye.</p>
+                    <a href="{% url 'admission_process' %}" class="btn-outline-navy btn mt-3" style="align-self:flex-start;">View Process <i class="fas fa-arrow-right ms-1"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-4">
+            <div class="uni-card h-100" style="border-top:4px solid #1a7a45;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 6px 24px rgba(13,43,85,0.15)'" onmouseout="this.style.boxShadow='0 2px 12px rgba(13,43,85,0.09)'">
+                <div class="card-body d-flex flex-column">
+                    <div style="width:48px;height:48px;background:rgba(26,122,69,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:#1a7a45;margin-bottom:14px;">
+                        <i class="fas fa-rupee-sign"></i>
+                    </div>
+                    <h5 style="font-family:'Noto Serif',serif;font-weight:700;color:#0d2b55;margin-bottom:8px;">Fee Structure</h5>
+                    <p style="font-size:0.85rem;color:#5e7296;flex-grow:1;">Course wise semester/year fee structure aur payment details dekhiye.</p>
+                    <a href="{% url 'fee_structure' %}" class="btn-outline-navy btn mt-3" style="align-self:flex-start;">View Fees <i class="fas fa-arrow-right ms-1"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-4">
+            <div class="uni-card h-100" style="border-top:4px solid #1560a8;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 6px 24px rgba(13,43,85,0.15)'" onmouseout="this.style.boxShadow='0 2px 12px rgba(13,43,85,0.09)'">
+                <div class="card-body d-flex flex-column">
+                    <div style="width:48px;height:48px;background:rgba(21,96,168,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:#1560a8;margin-bottom:14px;">
+                        <i class="fas fa-poll-h"></i>
+                    </div>
+                    <h5 style="font-family:'Noto Serif',serif;font-weight:700;color:#0d2b55;margin-bottom:8px;">Check Result</h5>
+                    <p style="font-size:0.85rem;color:#5e7296;flex-grow:1;">Roll number aur date of birth se semester result check karein.</p>
+                    <a href="{% url 'result_search' %}" class="btn-saffron btn mt-3" style="align-self:flex-start;">Check Now <i class="fas fa-arrow-right ms-1"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-4">
+            <div class="uni-card h-100" style="border-top:4px solid #6c3483;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 6px 24px rgba(13,43,85,0.15)'" onmouseout="this.style.boxShadow='0 2px 12px rgba(13,43,85,0.09)'">
+                <div class="card-body d-flex flex-column">
+                    <div style="width:48px;height:48px;background:rgba(108,52,131,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:#6c3483;margin-bottom:14px;">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h5 style="font-family:'Noto Serif',serif;font-weight:700;color:#0d2b55;margin-bottom:8px;">Student ERP</h5>
+                    <p style="font-size:0.85rem;color:#5e7296;flex-grow:1;">Student portal – apna profile, results aur academic information access karein.</p>
+                    <a href="{% url 'student_login' %}" class="btn-outline-navy btn mt-3" style="align-self:flex-start;">Login to ERP <i class="fas fa-arrow-right ms-1"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-4">
+            <div class="uni-card h-100" style="border-top:4px solid #c0392b;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 6px 24px rgba(13,43,85,0.15)'" onmouseout="this.style.boxShadow='0 2px 12px rgba(13,43,85,0.09)'">
+                <div class="card-body d-flex flex-column">
+                    <div style="width:48px;height:48px;background:rgba(192,57,43,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:#c0392b;margin-bottom:14px;">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h5 style="font-family:'Noto Serif',serif;font-weight:700;color:#0d2b55;margin-bottom:8px;">Contact Us</h5>
+                    <p style="font-size:0.85rem;color:#5e7296;flex-grow:1;">Koi bhi query, feedback ya complaint ke liye hamare saath contact karein.</p>
+                    <a href="{% url 'contact' %}" class="btn-outline-navy btn mt-3" style="align-self:flex-start;">Contact <i class="fas fa-arrow-right ms-1"></i></a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Notice Bar -->
+    <div class="uni-card mb-4">
+        <div class="card-header-navy">
+            <h5><i class="fas fa-bullhorn me-2"></i>Important Notices</h5>
+        </div>
+        <div class="card-body p-0">
+            <div style="padding:14px 20px;border-bottom:1px solid #dce4ef;font-size:0.875rem;">
+                <span style="background:#fdecea;color:#c0392b;font-size:0.7rem;font-weight:700;padding:3px 8px;border-radius:4px;text-transform:uppercase;margin-right:10px;">New</span>
+                Semester Examinations 2025-26 ke schedule jald upload honge.
+                <span style="color:#5e7296;font-size:0.78rem;margin-left:10px;"><i class="fas fa-calendar me-1"></i>30 Mar 2026</span>
+            </div>
+            <div style="padding:14px 20px;border-bottom:1px solid #dce4ef;font-size:0.875rem;">
+                <span style="background:#e6f5ee;color:#1a7a45;font-size:0.7rem;font-weight:700;padding:3px 8px;border-radius:4px;text-transform:uppercase;margin-right:10px;">Info</span>
+                Odd Semester Results 2025 published. Portal par check karein.
+                <span style="color:#5e7296;font-size:0.78rem;margin-left:10px;"><i class="fas fa-calendar me-1"></i>15 Jan 2026</span>
+            </div>
+            <div style="padding:14px 20px;font-size:0.875rem;">
+                <span style="background:#e8f0fc;color:#1560a8;font-size:0.7rem;font-weight:700;padding:3px 8px;border-radius:4px;text-transform:uppercase;margin-right:10px;">Admission</span>
+                Session 2026-27 ke liye admission process jald shuru hogi.
+                <span style="color:#5e7296;font-size:0.78rem;margin-left:10px;"><i class="fas fa-calendar me-1"></i>5 Jan 2026</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

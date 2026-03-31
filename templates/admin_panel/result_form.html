@@ -1,0 +1,65 @@
+{% extends 'admin_panel/admin_base.html' %}
+
+{% block admin_content %}
+<h2 class="mb-3">{{ title }}</h2>
+
+<div class="card shadow-sm mb-4">
+    <div class="card-body">
+        <p class="mb-1"><strong>Student:</strong> {{ student.full_name }}</p>
+        <p class="mb-1"><strong>Roll Number:</strong> {{ student.roll_number }}</p>
+        <p class="mb-1"><strong>Course:</strong> {% if student.course %}{{ student.course.name }}{% else %}-{% endif %}</p>
+        <p class="mb-0"><strong>Current Semester:</strong> {{ student.semester }}</p>
+    </div>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        {% if allowed_semesters %}
+        <form method="post">
+            {% csrf_token %}
+
+            <h5 class="mb-3">Semester Selection</h5>
+            {{ result_form.as_p }}
+
+            <hr>
+            <h5 class="mb-3">Subjects</h5>
+            <p class="text-muted">
+                Regular subject: External out of 70, Internal out of 30.  
+                Extra subject: only External out of 100.
+            </p>
+
+            {{ formset.management_form }}
+
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Subject Name</th>
+                            <th>Extra Subject</th>
+                            <th>External Marks</th>
+                            <th>Internal Marks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for form in formset %}
+                        <tr>
+                            <td>{{ form.subject_name }}</td>
+                            <td>{{ form.is_extra_subject }}</td>
+                            <td>{{ form.external_marks }}</td>
+                            <td>{{ form.internal_marks }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <button class="btn btn-primary">Save Result</button>
+        </form>
+        {% else %}
+        <div class="alert alert-success mb-0">
+            This student already has results for all semesters allowed by the course.
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
